@@ -37,7 +37,19 @@ alias makej='make -j$(nproc)'
 
 alias gs='git status'
 
-if [ -f /usr/share/git/completion/git-prompt.sh ]; then source /usr/share/git/completion/git-prompt.sh; fi
+if command -v git >/dev/null 2>&1; then
+  if [ -f /usr/share/git/completion/git-prompt.sh ]; then
+    source /usr/share/git/completion/git-prompt.sh
+  elif [ -f /usr/share/git/contrib/completion/git-prompt.sh ]; then
+    source /usr/share/git/contrib/completion/git-prompt.sh
+  else
+    git_exec=$(git --exec-path 2>/dev/null)
+    git_prompt="$(dirname "$(dirname "$git_exec")")/share/git/contrib/completion/git-prompt.sh"
+    if [ -f "$git_prompt" ]; then
+      source "$git_prompt"
+    fi
+  fi
+fi
 
 PS1='\[\e[1;32m\]\u \[\e[1;94m\]\w$(__git_ps1 " \[\e[0;34m\]git:(\[\e[1;31m\]%s\[\e[0;34m\])")\[\e[0m\]\n\$ '
 
