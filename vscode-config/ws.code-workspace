@@ -1,0 +1,307 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "launch": {
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "name": "Bazelerator",
+                "type": "bazel",
+                "request": "launch",
+                "build": true,
+                "debugger": "gdb",
+                "target": "//apps/body/pw/power_window/test/component:swc_power_window_component_test",
+                "args": [
+                    // For a regular TEST_F(TestFixtureName, TestName)
+                    "--gtest_filter=pwTestPduTransmissionMode.PduModeSwitching_POSITION_FH_FATH",
+                    // For a TEST_P(TestFixtureName, TestName) instantiated with
+                    // INSTANTIATE_TEST_SUITE_P(InstantiationName, TestFixtureName, Params...);
+                    // "--gtest_filter=\"InstantiationName/TestFixtureName*.TestName/*\"", 
+                ],
+            },
+            {
+                "name": "Wipe Wash",
+                "type": "cppdbg",
+                "request": "launch",
+                "program": "${workspaceFolder}/bazel-bin/apps/body/ww/",
+                "stopAtEntry": false,
+                "args": [
+                    "--gtest_filter=AmbientTemperatureServiceTest.AmbientTemperatureData_NotSent_When_NoPayloadChange"
+                    // For a TEST_P(TestFixtureName, TestName) instantiated with
+                    // INSTANTIATE_TEST_SUITE_P(InstantiationName, TestFixtureName, Params...);
+                    // "--gtest_filter=\"InstantiationName/TestFixtureName*.TestName/*\"", 
+                ],
+                "preLaunchTask": "Build Wipe Wash",
+                "cwd": "${workspaceFolder}",
+                "externalConsole": false,
+                "MIMode": "gdb",
+                "setupCommands": [
+                    {
+                        "description": "Enable pretty-printing for gdb",
+                        "text": "-enable-pretty-printing",
+                        "ignoreFailures": true
+                    },
+                ],
+            },
+        ]
+    },
+    "settings": {
+        "bazelerator.enableCodeLens": true,
+        "bazelerator.buildifierFixOnFormat": true,
+        "bazelerator.packages": [
+            // "//apps/body/...",
+            // "//apps/comfort/...",
+        ],
+        "bazelerator.favorites": [
+            // "//apps/body/ww/wipe_wash",
+            // "//apps/body/pw/power_window",
+        ],
+        "bazelerator.configurations": {
+            "ipb": {
+                "release": [
+                    "--config=gateway"
+                ],
+                "debug": [
+                    "--config=gateway"
+                ],
+            },
+        },
+        "bazelerator.gdb.breakOnExceptions": true,
+        "bazelerator.cpp.compileCommandsDir": "${workspaceFolder}",
+        "bazelerator.cpp.debugger": "gdb",
+        "bazelerator.cpp.mode": "actions",
+        "bazelerator.cpp.target": "clangd",
+        "bazelerator.cpp.gdbPath": "gdb",
+        "bazelerator.activeConfiguration": {
+            "configuration": "ipb",
+            "mode": "debug"
+        },
+        "bazelerator.automaticTestScan": false,
+        "clangd.arguments": [
+            "--compile-commands-dir=${workspaceFolder}/",
+            "--background-index",
+            // "--cross-file-rename",
+            "--clang-tidy",
+            "--header-insertion=never",
+            "--fallback-style=none",
+        ],
+        "clangd.checkUpdates": true,
+        "clangd.onConfigChanged": "restart",
+        "clangd.serverCompletionRanking": false,
+        "clangd.fallbackFlags": [
+            "--std=c++17"
+        ],
+        "[cpp]": {
+            "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",
+            "editor.wordBasedSuggestions": "matchingDocuments",
+            "editor.formatOnSave": true,
+            // "editor.formatOnSaveMode": "modifications",
+            "files.insertFinalNewline": true,
+            "files.trimFinalNewlines": true,
+        },
+        "[starlark]": {
+            "editor.defaultFormatter": "TeamLagrange.vscode-bazel-next"
+        },
+        "[json]": {
+            "files.insertFinalNewline": true,
+            "files.trimFinalNewlines": true,
+        },
+        "clangd.enableCodeCompletion": false,
+        "C_Cpp.autocomplete": "disabled",
+        "C_Cpp.autoAddFileAssociations": false,
+        "C_Cpp.clang_format_sortIncludes": true,
+        "C_Cpp.default.browse.limitSymbolsToIncludedHeaders": false,
+        "C_Cpp.default.enableConfigurationSquiggles": false,
+        "C_Cpp.dimInactiveRegions": false,
+        "C_Cpp.errorSquiggles": "disabled",
+        "C_Cpp.formatting": "disabled",
+        "C_Cpp.intelliSenseEngine": "disabled",
+        "files.watcherExclude": {
+            "**/.cache/**": true,
+            "**/bazel-*/**": true,
+        },
+        "files.exclude": {
+            "**/.cache/**": true,
+            "**/bazel-ddad/**": true,
+            "**/bazel-testlogs/**": true,
+        },
+        "git.ignoreLimitWarning": true,
+        "gitlens.codeLens.includeSingleLineSymbols": true,
+        "search.exclude": {
+            "**/.cache/**": true,
+            // "**/bazel-bin/**": true,
+        },
+        // "workbench.editor.enablePreviewFromQuickOpen": false,
+        // "workbench.editor.enablePreview": false,
+        "workbench.editor.openPositioning": "last",
+        "workbench.editor.wrapTabs": true,
+        // "workbench.colorCustomizations": {
+        //     "editor.selectionBackground": "#ffffff",
+        //     "editor.selectionHighlightBackground": "#928374",
+        //     "editor.findMatchBackground": "#cc241d",
+        //     "editor.findMatchHighlightBackground": "#a93226",
+        //     // "list.filterMatchBackground": "#ff00ff",
+        //     // "list.filterMatchHighlight": "#ff66ff",
+        // },
+        "github.copilot.advanced": {
+            "authProvider": "github-enterprise"
+        },
+        "github-enterprise.uri": "https://bmw.ghe.com/",
+        "gitlens.remotes": [
+            {
+                "domain": "cc-github.bmwgroup.net",
+                "type": "Custom",
+                "name": "CodeCraft GitHub",
+                "protocol": "https",
+                "urls": {
+                    "repository": "https://cc-github.bmwgroup.net/${repo}",
+                    "branches": "https://cc-github.bmwgroup.net/${repo}/branches",
+                    "branch": "https://cc-github.bmwgroup.net/${repo}/commits/${branch}",
+                    "commit": "https://cc-github.bmwgroup.net/${repo}/commit/${id}",
+                    "file": "https://cc-github.bmwgroup.net/${repo}?path=${file}${line}",
+                    "fileInBranch": "https://cc-github.bmwgroup.net/${repo}/blob/${branch}/${file}${line}",
+                    "fileInCommit": "https://cc-github.bmwgroup.net/${repo}/blob/${id}/${file}${line}",
+                    "fileLine": "#L${line}",
+                    "fileRange": "#L${start}-L${end}"
+                }
+            }
+        ],
+        "gitlens.autolinks": [
+            {
+                "prefix": "CB-#",
+                "url": "https://codebeamer.bmwgroup.net:8443/cb/issue/<num>"
+            }
+        ],
+        "github.copilot.nextEditSuggestions.enabled": true,
+        "npm.autoDetect": "off",
+        "chat.tools.terminal.autoApprove": {
+            "bazel": true
+        },
+        "editor.semanticHighlighting.enabled": true,
+    },
+    "tasks": {
+        "version": "2.0.0",
+        "tasks": [
+            {
+                "label": "Build Gateway Hw Tests",
+                "type": "shell",
+                "command": "bazel build --config=gateway //ecu_instances/gateway/image_generator:qspi_image_hwtest ${input:gatewayBoardConfig}",
+                "options": {
+                    "cwd": "${workspaceFolder}"
+                },
+                "group": "build"
+            },
+            {
+                "label": "Build + CC: Gateway Hw Tests",
+                "type": "shell",
+                "command": "BOARD='${input:gatewayBoardConfig}' && bazel build --config=gateway //ecu_instances/gateway/image_generator:qspi_image_hwtest $BOARD && ${workspaceFolder}/.devcontainer/gen_compile_commands.sh --config=gateway //ecu_instances/gateway/image_generator:qspi_image_hwtest $BOARD",
+                "options": {
+                    "cwd": "${workspaceFolder}"
+                },
+                "group": "build",
+                "problemMatcher": []
+            },
+            {
+                "label": "Build Gateway App",
+                "type": "shell",
+                "command": "bazel build //ecu_instances/gateway/image_generator:qspi_image_threadx --config=gateway ${input:gatewayBoardConfig}",
+                "options": {
+                    "cwd": "${workspaceFolder}"
+                },
+                "group": "build"
+            },
+            {
+                "label": "Build + CC: Gateway App",
+                "type": "shell",
+                "command": "BOARD='${input:gatewayBoardConfig}' && bazel build --config=gateway //ecu_instances/gateway/image_generator:qspi_image_threadx $BOARD && ${workspaceFolder}/.devcontainer/gen_compile_commands.sh --config=gateway //ecu_instances/gateway/image_generator:qspi_image_threadx $BOARD",
+                "options": {
+                    "cwd": "${workspaceFolder}"
+                },
+                "group": "build",
+                "problemMatcher": []
+            },
+            {
+                "label": "Build IPB2 Controller2 App",
+                "type": "shell",
+                "command": "bazel build --config=ipb2_app2_device //ecu_instances/ipb2/controller2/integration/hardware/device/image_generator:qspi_image ${input:gatewayBoardConfig}",
+                "options": {
+                    "cwd": "${workspaceFolder}"
+                },
+                "group": "build"
+            },
+            {
+                "label": "Build + CC: IPB2 Controller2 App",
+                "type": "shell",
+                "command": "BOARD='${input:gatewayBoardConfig}' && bazel build --config=ipb2_app2_device //ecu_instances/ipb2/controller2/integration/hardware/device/image_generator:qspi_image $BOARD && ${workspaceFolder}/.devcontainer/gen_compile_commands.sh --config=ipb2_app2_device //ecu_instances/ipb2/controller2/integration/hardware/device/image_generator:qspi_image $BOARD",
+                "options": {
+                    "cwd": "${workspaceFolder}"
+                },
+                "group": "build",
+                "problemMatcher": []
+            },
+            {
+                "label": "Build Spaceballs HwTest",
+                "command": "bazel",
+                "args": [
+                    "build",
+                    "//ecu_instances/spaceballs/cluster_0/core_0:hardware_test",
+                    "--config=spaceballs_cluster_0_core_0"
+                ],
+                "group": "build",
+                "problemMatcher": []
+            },
+            {
+                "label": "Build Spaceballs CR00",
+                "command": "bazel",
+                "args": [
+                    "build",
+                    "//ecu_instances/spaceballs/cluster_0/core_0:binaries_threadx",
+                    "--config=spaceballs_cluster_0_core_0"
+                ],
+                "group": "build",
+                "problemMatcher": []
+            },
+            {
+                "label": "Build Spaceballs CR01",
+                "command": "bazel",
+                "args": [
+                    "build",
+                    "//ecu_instances/spaceballs/cluster_0/core_1:binaries_threadx",
+                    "--config=spaceballs_cluster_0_core_1"
+                ],
+                "group": "build",
+                "problemMatcher": []
+            },
+            {
+                "label": "Build + Compile Commands: All ECUs",
+                "dependsOn": [
+                    "Build + CC: Gateway Hw Tests",
+                    "Build + CC: Gateway App",
+                    "Build + CC: IPB2 Controller2 App"
+                ],
+                "dependsOrder": "sequence",
+                "group": {
+                    "kind": "build",
+                    "isDefault": false
+                },
+                "problemMatcher": []
+            }
+        ],
+        "inputs": [
+            {
+                "id": "gatewayBoardConfig",
+                "type": "pickString",
+                "description": "Select the board configuration",
+                "options": [
+                    "--cxxopt=-DBOARD_ZIM",
+                    "--cxxopt=-DBOARD_EVB_E288",
+                    "--cxxopt=-DBOARD_IPB2"
+                ],
+                "default": "--cxxopt=-DBOARD_ZIM"
+            }
+        ]
+    },
+}
