@@ -2,8 +2,6 @@
 
 alias ls='ls --color=auto'
 
-alias vim=nvim
-
 alias ebashrc='nvim ~/.bashrc'
 
 alias sbashrc='source ~/.bashrc'
@@ -35,8 +33,7 @@ alias rebuild='cd .. && rm -rf build && mkdir -p build && cd build && cmake ..'
 
 alias makej='make -j$(nproc)'
 
-alias gs='git status'
-
+# Required for our PS1
 if command -v git >/dev/null 2>&1; then
   if [ -f /usr/share/git/completion/git-prompt.sh ]; then
     source /usr/share/git/completion/git-prompt.sh
@@ -54,6 +51,22 @@ fi
 PS1='\[\e[1;32m\]\u \[\e[1;94m\]\w$(__git_ps1 " \[\e[0;34m\]git:(\[\e[1;31m\]%s\[\e[0;34m\])")\[\e[0m\]\n\$ '
 
 PROMPT_DIRTRIM=1
+
+# Git aliases
+alias gs='git status'
+alias gpf='git push -f'
+alias gca='git commit --amend'
+alias gb='git branch'
+
+# Git commands
+gco() { git checkout "$@"; }
+ga() { git add "$@"; }
+gst() { git status "$@"; }
+gc() { git commit "$@"; }
+gcm() { git commit -m "$@"; }
+gps() { git push "$@"; }
+gpl() { git pull "$@"; }
+
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
