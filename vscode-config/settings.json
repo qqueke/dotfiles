@@ -1,0 +1,177 @@
+{
+  "vim.autoindent": false,
+  "editor.minimap.enabled": false,
+  "workbench.startupEditor": "none",
+  "C_Cpp.intelliSenseEngine": "default",
+  "dev.containers.executeInWSL": true,
+  "editor.cursorBlinking": "solid",
+  "editor.lineNumbers": "relative",
+  "editor.stickyScroll.enabled": false,
+  "bazelerator.followSymlinks": true,
+  "bazelerator.gdb.breakOnExceptions": true,
+  "editor.fontFamily": "'JetBrainsMono Nerd Font', monospace",
+  "vim.useSystemClipboard": true,
+  "vim.leader": "<space>",
+  "extensions.experimental.affinity": {
+    "vscodevim.vim": 0
+  },
+  "vim.insertModeKeyBindingsNonRecursive": [],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "<CR>"
+      ],
+      "after": [
+        "o",
+        "<Esc>",
+        "z",
+        "z"
+      ]
+    },
+    {
+      "before": [
+        "x"
+      ],
+      "after": [
+        "\"",
+        "_",
+        "x"
+      ]
+    },
+    {
+      "before": [
+        "c"
+      ],
+      "after": [
+        "\"",
+        "_",
+        "c"
+      ]
+    },
+    {
+      "before": [
+        "D"
+      ],
+      "after": [
+        "\"",
+        "_",
+        "D"
+      ]
+    },
+    {
+      "before": [
+        "C"
+      ],
+      "after": [
+        "\"",
+        "_",
+        "C"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "D"
+      ],
+      "commands": [
+        "editor.action.revealDeclaration"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "r"
+      ],
+      "commands": [
+        "editor.action.referenceSearch.trigger"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "i"
+      ],
+      "commands": [
+        "editor.action.goToImplementation"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "y"
+      ],
+      "commands": [
+        "editor.action.goToTypeDefinition"
+      ]
+    }
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "<CR>"
+      ],
+      "after": [
+        "<Esc>"
+      ]
+    },
+    {
+      "before": [
+        "~"
+      ],
+      "after": [
+        "<Esc>"
+      ]
+    },
+    {
+      "before": [
+        "x"
+      ],
+      "after": [
+        "\"",
+        "_",
+        "x"
+      ]
+    },
+    {
+      "before": [
+        "c"
+      ],
+      "after": [
+        "\"",
+        "_",
+        "c"
+      ]
+    },
+    {
+      "before": [
+        "p"
+      ],
+      "after": [
+        "P"
+      ]
+    }
+  ],
+  "C_Cpp.codeAnalysis.clangTidy.enabled": true,
+  "remote.autoForwardPortsSource": "hybrid",
+  "workbench.sideBar.location": "right",
+  "editor.autoClosingBrackets": "never",
+  "editor.accessibilitySupport": "off",
+  "clangd.checkUpdates": false,
+  "git.openRepositoryInParentFolders": "never",
+  "C_Cpp.autocomplete": "disabled",
+  "workbench.editorAssociations": {
+    "*.elf": "default"
+  },
+  "workbench.colorTheme": "Cyberpunk 2077",
+  "editor.formatOnSave": true,
+  "git.blame.statusBarItem.enabled": false,
+  "git.blame.editorDecoration.disableHover": true,
+  "gitlens.currentLine.enabled": false,
+  "github.copilot.advanced": {
+    "authProvider": "github-enterprise"
+  },
+  "gitlens.ai.model": "vscode",
+  "gitlens.ai.vscode.model": "copilot:gpt-4.1",
+  "chat.viewSessions.orientation": "stacked",
+  "github-enterprise.uri": "https://bmw.ghe.com/"
+}
