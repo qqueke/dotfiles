@@ -167,11 +167,7 @@
   "git.blame.statusBarItem.enabled": false,
   "git.blame.editorDecoration.disableHover": true,
   "gitlens.currentLine.enabled": false,
-  "github.copilot.advanced": {
-    "authProvider": "github-enterprise"
-  },
   "gitlens.ai.model": "vscode",
   "gitlens.ai.vscode.model": "copilot:gpt-4.1",
   "chat.viewSessions.orientation": "stacked",
-  "github-enterprise.uri": "https://bmw.ghe.com/"
 }
