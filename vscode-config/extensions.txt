@@ -1,0 +1,7 @@
+vscodevim.vim
+alefragnani.bookmarks
+ms-vscode.cpptools
+llvm-vs-code-extensions.vscode-clangd
+eamodio.gitlens
+ms-vscode.hexeditor
+denialtech.cbrp-2077
